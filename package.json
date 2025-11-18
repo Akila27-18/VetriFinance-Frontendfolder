@@ -32,7 +32,6 @@
     "vite": "^5.4.21"
   },
   "description": "Vetri Finance Frontend (stable)",
-  "main": "postcss.config.js",
   "keywords": [],
   "author": "",
   "license": "ISC"
