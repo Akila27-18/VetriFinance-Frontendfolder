@@ -10,7 +10,9 @@ export default function SplitBillModal({ open, onClose, users = [], onAdd }) {
 
   const toggleUser = (user) => {
     setSelectedUsers((prev) =>
-      prev.includes(user) ? prev.filter((u) => u !== user) : [...prev, user]
+      prev.includes(user)
+        ? prev.filter((u) => u !== user)
+        : [...prev, user]
     );
   };
 
@@ -21,33 +23,38 @@ export default function SplitBillModal({ open, onClose, users = [], onAdd }) {
     const amount = Number(total);
     const perPerson = amount / selectedUsers.length;
 
-    // Generate one expense for each participant
+    // Create one expense per participant (your original logic)
     const newExpenses = selectedUsers.map((user) => ({
-      id: Date.now() + Math.random(), // unique id
-      title: title,
+      id: Date.now() + Math.random(),
+      title,
       amount: perPerson,
       category: "Shared",
       shared: true,
       participants: selectedUsers,
-      paidBy: paidBy,
+      paidBy,
       date: new Date().toISOString().split("T")[0],
     }));
 
     onAdd(newExpenses);
 
-    // Reset modal fields
-    setTitle("");
-    setTotal("");
-    setSelectedUsers([]);
-    setPaidBy("");
+    // Close modal first (smoother)
     onClose();
+
+    // Reset values after closing
+    setTimeout(() => {
+      setTitle("");
+      setTotal("");
+      setSelectedUsers([]);
+      setPaidBy("");
+    }, 50);
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl shadow p-6 w-full max-w-md">
+      <div className="bg-white rounded-xl shadow p-6 w-full max-w-md animate-fadeIn">
         <h2 className="text-xl font-semibold mb-4">Split Bill</h2>
 
+        {/* Title */}
         <div className="mb-3">
           <label className="block text-sm font-medium">Title</label>
           <input
@@ -59,17 +66,19 @@ export default function SplitBillModal({ open, onClose, users = [], onAdd }) {
           />
         </div>
 
+        {/* Total Amount */}
         <div className="mb-3">
           <label className="block text-sm font-medium">Total Amount</label>
           <input
             type="number"
             value={total}
-            onChange={(e) => setTotal(e.target.value)}
+            onChange={(e) => setTotal(Number(e.target.value))}
             className="w-full border rounded px-2 py-1 mt-1"
             placeholder="₹0"
           />
         </div>
 
+        {/* Participants */}
         <div className="mb-3">
           <label className="block text-sm font-medium">Select Participants</label>
           <div className="flex flex-wrap gap-2 mt-1">
@@ -77,7 +86,7 @@ export default function SplitBillModal({ open, onClose, users = [], onAdd }) {
               <button
                 key={user}
                 onClick={() => toggleUser(user)}
-                className={`px-2 py-1 rounded text-sm border ₹{
+                className={`px-2 py-1 rounded text-sm border ${
                   selectedUsers.includes(user)
                     ? "bg-blue-500 text-white border-blue-500"
                     : "bg-gray-100 text-gray-700"
@@ -89,6 +98,7 @@ export default function SplitBillModal({ open, onClose, users = [], onAdd }) {
           </div>
         </div>
 
+        {/* Paid By */}
         <div className="mb-3">
           <label className="block text-sm font-medium">Paid By</label>
           <select
@@ -105,6 +115,7 @@ export default function SplitBillModal({ open, onClose, users = [], onAdd }) {
           </select>
         </div>
 
+        {/* Buttons */}
         <div className="flex justify-end gap-2 mt-4">
           <button
             onClick={onClose}

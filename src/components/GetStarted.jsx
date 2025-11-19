@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -22,13 +23,11 @@ export default function GetStarted() {
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
         >
-          <h1 className="text-4xl font-bold mb-4">
-            Get started with Vetri Finance
-          </h1>
+          <h1 className="text-4xl font-bold mb-4">Get started with Vetri Finance</h1>
 
           <p className="text-gray-600 mb-6">
-            Set up your account, connect UPI/bank, invite your partner, and
-            start tracking shared expenses in minutes.
+            Set up your account, connect UPI/bank, invite your partner,
+            and start tracking shared expenses in minutes.
           </p>
 
           <div className="flex gap-3">
@@ -38,6 +37,7 @@ export default function GetStarted() {
             >
               Create Account
             </button>
+
             <Link
               to="/learn-more"
               className="px-6 py-3 border rounded-lg hover:bg-gray-100 transition"
@@ -47,13 +47,13 @@ export default function GetStarted() {
           </div>
         </motion.div>
 
-        {/* Replace this image */}
+        {/* HERO IMAGE */}
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
         >
           <img
-            src="/src/assets/illustrations/get-started-hero.jpg"
+            src="/assets/illustrations/get-started-hero.jpg"
             className="w-full h-72 object-cover rounded-xl shadow-xl"
             alt="Getting Started Illustration"
           />
@@ -63,17 +63,19 @@ export default function GetStarted() {
       {/* FEATURES */}
       <section className="mt-16 grid md:grid-cols-3 gap-6">
         <Feature
-          img="/src/assets/icons/budget.jpg"
+          img="/assets/icons/budget.jpg"
           title="Set up budgets"
           text="Create and manage monthly budgets effortlessly."
         />
+
         <Feature
-          img="/src/assets/icons/upi.jpg"
+          img="/assets/icons/upi.jpg"
           title="Connect UPI & Bank"
           text="Auto-capture transactions from linked accounts."
         />
+
         <Feature
-          img="/src/assets/icons/partner.png"
+          img="/assets/icons/partner.png"
           title="Invite Partner"
           text="Collaborate and track shared expenses in realtime."
         />
@@ -98,7 +100,7 @@ export default function GetStarted() {
         >
           <SwiperSlide>
             <ImageSlide
-              img="/src/assets/illustrations/walkthrough-1.jpg"
+              img="/assets/illustrations/walkthrough-1.jpg"
               title="Automatic expense tracking"
               text="Linked UPI and bank transactions are categorized instantly."
             />
@@ -106,7 +108,7 @@ export default function GetStarted() {
 
           <SwiperSlide>
             <ImageSlide
-              img="/src/assets/illustrations/walkthrough-2.jpg"
+              img="/assets/illustrations/walkthrough-2.jpg"
               title="Plan monthly budgets"
               text="Visualize and adjust planned vs actual spending."
             />
@@ -114,7 +116,7 @@ export default function GetStarted() {
 
           <SwiperSlide>
             <ImageSlide
-              img="/src/assets/illustrations/walkthrough-3.jpg"
+              img="/assets/illustrations/walkthrough-3.jpg"
               title="Partner chat & bill splitting"
               text="Discuss expenses and split bills inside chat."
             />
@@ -150,7 +152,12 @@ const Feature = ({ img, title, text }) => (
     whileHover={{ y: -6 }}
     className="bg-white rounded-xl shadow p-6 text-center"
   >
-    <img src={img} className="w-16 h-16 mx-auto mb-3" alt={title} />
+    <img
+      src={img}
+      className="w-16 h-16 mx-auto mb-3 object-contain"
+      alt={title}
+    />
+
     <div className="font-semibold mb-1">{title}</div>
     <p className="text-gray-500 text-sm">{text}</p>
   </motion.div>
@@ -159,7 +166,12 @@ const Feature = ({ img, title, text }) => (
 // Carousel Slide Component
 const ImageSlide = ({ img, title, text }) => (
   <div className="bg-white p-6 rounded-xl shadow flex items-center gap-6">
-    <img src={img} className="w-40 h-32 rounded-lg object-cover" alt={title} />
+    <img
+      src={img}
+      className="w-40 h-32 rounded-lg object-cover"
+      alt={title}
+    />
+
     <div>
       <div className="font-semibold text-lg">{title}</div>
       <div className="text-sm text-gray-500">{text}</div>

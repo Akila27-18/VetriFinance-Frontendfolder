@@ -11,11 +11,10 @@ export default function AddExpenseModal({ open, onClose, onAdd }) {
 
   useEffect(() => {
     if (open) {
-      // Reset fields when modal opens
       setTitle("");
       setAmount("");
       setCategory(defaultCategories[0]);
-      setDate(new Date().toISOString().split("T")[0]); // default to today
+      setDate(new Date().toISOString().split("T")[0]);
       setShared(false);
     }
   }, [open]);
@@ -27,8 +26,9 @@ export default function AddExpenseModal({ open, onClose, onAdd }) {
       return;
     }
 
+    // ✅ FIX: backend expects "description"
     onAdd({
-      title,
+      description: title,
       amount: Number(amount),
       category,
       date,
@@ -48,6 +48,7 @@ export default function AddExpenseModal({ open, onClose, onAdd }) {
           ✕
         </button>
         <h2 className="text-xl font-semibold mb-4">Add Expense</h2>
+
         <form className="space-y-3" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-medium mb-1">Title</label>
@@ -101,7 +102,9 @@ export default function AddExpenseModal({ open, onClose, onAdd }) {
               onChange={(e) => setShared(e.target.checked)}
               id="shared-checkbox"
             />
-            <label htmlFor="shared-checkbox" className="text-sm">Shared Expense</label>
+            <label htmlFor="shared-checkbox" className="text-sm">
+              Shared Expense
+            </label>
           </div>
 
           <button

@@ -1,11 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import { Autoplay, Pagination } from "swiper";
 import { Autoplay, Pagination } from "swiper/modules";
 
-
-// Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -30,7 +27,7 @@ const FeatureCard = ({ imgSrc, title, description }) => (
     whileHover={{ scale: 1.05 }}
     className="bg-white shadow-lg rounded-xl p-5 flex flex-col items-center text-center"
   >
-    <img src={imgSrc} alt={title} className="w-16 h-16 mb-4" />
+    <img src={imgSrc} alt={title} className="w-16 h-16 mb-4 object-contain" />
     <h3 className="font-semibold text-lg mb-2">{title}</h3>
     <p className="text-gray-500 text-sm">{description}</p>
   </motion.div>
@@ -41,11 +38,10 @@ export default function Landing() {
     <div
       className="px-6 md:px-16 py-12 relative"
       style={{
-        background:
-          "linear-gradient(135deg, #fff 0%, #fff7f2 40%, #ffe6d5 100%)",
+        background: "linear-gradient(135deg, #fff 0%, #fff7f2 40%, #ffe6d5 100%)",
       }}
     >
-      {/* Decorative Blur Background Shapes */}
+      {/* Background Shapes */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200 opacity-30 blur-3xl rounded-full"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-300 opacity-20 blur-3xl rounded-full"></div>
 
@@ -107,13 +103,13 @@ export default function Landing() {
             className="w-full h-72"
           >
             <SwiperSlide>
-              <img src={finance1} className="object-cover w-full h-full" />
+              <img src={finance1} alt="Finance Slide 1" className="object-cover w-full h-full" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={finance2} className="object-cover w-full h-full" />
+              <img src={finance2} alt="Finance Slide 2" className="object-cover w-full h-full" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={finance3} className="object-cover w-full h-full" />
+              <img src={finance3} alt="Finance Slide 3" className="object-cover w-full h-full" />
             </SwiperSlide>
           </Swiper>
         </motion.div>
@@ -142,16 +138,19 @@ export default function Landing() {
       <section className="mt-20 grid md:grid-cols-3 gap-4">
         <motion.img
           src={highlight1}
+          alt="Highlight 1"
           className="rounded-xl w-full h-48 object-cover"
           whileHover={{ scale: 1.05 }}
         />
         <motion.img
           src={highlight2}
+          alt="Highlight 2"
           className="rounded-xl w-full h-48 object-cover"
           whileHover={{ scale: 1.05 }}
         />
         <motion.img
           src={highlight3}
+          alt="Highlight 3"
           className="rounded-xl w-full h-48 object-cover"
           whileHover={{ scale: 1.05 }}
         />

@@ -6,6 +6,15 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
+// Import images the correct way
+import featureBudget from "../assets/illustrations/feature-budget.jpg";
+import featureExpense from "../assets/illustrations/feature-expense.jpg";
+import featureChat from "../assets/illustrations/feature-chat.jpg";
+
+import showcase1 from "../assets/illustrations/showcase-1.jpg";
+import showcase2 from "../assets/illustrations/showcase-2.jpg";
+import showcase3 from "../assets/illustrations/showcase-3.jpg";
+
 export default function LearnMore() {
   return (
     <div
@@ -34,19 +43,19 @@ export default function LearnMore() {
       {/* 3 Feature Sections */}
       <section className="grid md:grid-cols-3 gap-6">
         <Feature
-          img="/src/assets/illustrations/feature-budget.jpg"
+          img={featureBudget}
           title="Smart Budgeting"
           text="Plan monthly or weekly budgets with alerts and insights."
         />
 
         <Feature
-          img="/src/assets/illustrations/feature-expense.jpg"
+          img={featureExpense}
           title="Real-time Expense Tracking"
           text="Auto-capture from UPI and bank accounts."
         />
 
         <Feature
-          img="/src/assets/illustrations/feature-chat.jpg"
+          img={featureChat}
           title="Partner Chat"
           text="Communicate with your partner and split bills instantly."
         />
@@ -70,7 +79,7 @@ export default function LearnMore() {
       >
         <SwiperSlide>
           <ShowcaseSlide
-            img="/src/assets/illustrations/showcase-1.jpg"
+            img={showcase1}
             title="Visual spending insights"
             text="Beautiful charts that summarize your month."
           />
@@ -78,7 +87,7 @@ export default function LearnMore() {
 
         <SwiperSlide>
           <ShowcaseSlide
-            img="/src/assets/illustrations/showcase-2.jpg"
+            img={showcase2}
             title="UPI transaction insights"
             text="Weekly summaries directly from your UPI activity."
           />
@@ -86,7 +95,7 @@ export default function LearnMore() {
 
         <SwiperSlide>
           <ShowcaseSlide
-            img="/src/assets/illustrations/showcase-3.jpg"
+            img={showcase3}
             title="Shared expense dashboard"
             text="Track what you paid, what your partner paid, and what’s pending."
           />
@@ -114,10 +123,7 @@ export default function LearnMore() {
 }
 
 const Feature = ({ img, title, text }) => (
-  <motion.div
-    whileHover={{ y: -6 }}
-    className="bg-white rounded-xl shadow p-6"
-  >
+  <motion.div whileHover={{ y: -6 }} className="bg-white rounded-xl shadow p-6">
     <img src={img} className="w-full h-40 rounded-lg object-cover mb-3" />
     <div className="font-semibold mb-1">{title}</div>
     <div className="text-sm text-gray-500">{text}</div>
